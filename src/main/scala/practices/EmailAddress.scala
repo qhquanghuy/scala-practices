@@ -78,7 +78,7 @@ object EmailAddress {
       val dotChars = dot ~ validChars ^^ { case dot ~ chars => dot + chars.mkString }
 
       val parser = validChars ~ dotChars.* ^^ {
-        case charses ~ dotCharses => charses.mkString + dotCharses.mkString
+        case chars ~ dotChars => chars.mkString + dotChars.mkString
       }
 
       parser
