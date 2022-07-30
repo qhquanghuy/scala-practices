@@ -6,7 +6,7 @@ import java.time.DayOfWeek
 import org.scalacheck.Prop.*
 import org.scalacheck.Properties
 import org.scalacheck.*
-  import collection.convert.ImplicitConversions.*
+import collection.convert.ImplicitConversions.*
 import scala.util.Random
 
 
