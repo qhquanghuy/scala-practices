@@ -24,7 +24,7 @@ private def maskPhoneNumber(phoneNumber: PhoneNumber) = {
       else ('*' +: str) -> (digitCount + 1)
   }
 
-  phoneNumber.prefix.map(_.toString()).getOrElse("") + masked
+  phoneNumber.prefixStr + masked
 }
 
 def maskPersonalInfo(str: String): Either[String, String] = {

@@ -6,7 +6,9 @@ import scala.util.parsing.combinator.*
 final case class PhoneNumber private (prefix: Option[Char], digits: String) {
   private def copy() = ???
 
-  override def toString(): String = s"${prefix}$digits"
+  override def toString(): String = s"${prefixStr}$digits"
+
+  def prefixStr = prefix.map(_.toString()).getOrElse("")
 }
 
 final case class TrimmedString private (value: String) {
