@@ -24,13 +24,3 @@ Example: (‘01-05-2021’, ‘30-05-2021’) => 5
 
 - [source](./src/main/scala/practices/MaskPersonalInfo.scala)
 - [test](./src/test/scala/practices/MaskPersonalInfoTests.scala)
-
-### 4. Achievement
-
-My proudest achievement is reducing run time and compute resource for a Batch Job from 2 hours+ to less than an hour.
-
-The Batch Job is about scrape data from Amazon Advertising API and we use Akka Stream for such of task. I logged the request then used Amazon Log Insight and Kibana to visualize the request throughput. Batch Job fired multiple requests  at first and it waited for a long time to request again. After dug into log I found that it was wait exponentially because of Amazon API 429 (Too many request). To fix that issue I throttled the Stream then it looked good.
-
-Another problem is Batch Job used a blocking http client so akka upstream was back-pressured -> changed http-client to non-blocking one (akka-http). About Batch Job compute resource, because the Amazon API has rate limit and after fixed blocking issue then we no need to much CPU for it. Sometimes Batch Job ran into OutOfMemory because of many data loaded into memory -> streamed response data directly to disk (we do not care about data schema in this stage)
-
-I learnt a lot about stream processing, non blocking (I/O) operation and log visualization after fixed those issues. Stream processing and non blocking (I/O) help me a lot to understand how event-driven system like Nodejs work under the hood.
